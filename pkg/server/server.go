@@ -10,19 +10,23 @@ import (
 	"sync"
 )
 
+//HandleFunc handling functions
 type HandleFunc func(conn net.Conn)
 
+//Server structure
 type Server struct {
 	addr     string
 	mu       sync.RWMutex
 	handlers map[string]HandleFunc
 }
 
+//const hosts for tests
 const (
 	Host = "0.0.0.0"
 	Port = "9999"
 )
 
+//NewServer Creates new server
 func NewServer(addr string) *Server {
 	return &Server{
 		addr:     addr,
@@ -30,6 +34,7 @@ func NewServer(addr string) *Server {
 	}
 }
 
+//Register registers handlers 
 func (s *Server) Register(path string, handler HandleFunc) {
 	s.mu.Lock()
 	defer s.mu.Unlock()

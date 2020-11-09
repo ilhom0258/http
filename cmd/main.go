@@ -4,7 +4,7 @@ import (
 	"net"
 	"os"
 
-	"github.com/ilhom0258/server/pkg/server"
+	"github.com/ilhom0258/http/pkg/server"
 )
 
 func main() {
